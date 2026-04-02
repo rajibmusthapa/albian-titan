@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f8fafc; }
+        .item-card { background: white; border-radius: 20px; padding: 20px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #e2e8f0; }
+        .info b { font-size: 16px; color: #0f172a; }
+        .price { color: #0284c7; font-weight: 800; font-size: 14px; }
+        .buy-btn { background: #0f172a; color: white; border: none; padding: 12px 20px; border-radius: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2 style="margin-bottom: 25px;">Albian Chemical Store</h2>
+    
+    <div class="item-card">
+        <div class="info">
+            <b>Kaporit 90% (China)</b><br>
+            <span class="price">Rp 45.000 / Kg</span>
+        </div>
+        <button class="buy-btn" onclick="order('Kaporit')">Beli</button>
+    </div>
+
+    <div class="item-card">
+        <div class="info">
+            <b>Terusi (Biru)</b><br>
+            <span class="price">Rp 55.000 / Kg</span>
+        </div>
+        <button class="buy-btn" onclick="order('Terusi')">Beli</button>
+    </div>
+
+    <script>
+        function order(barang) {
+            window.location.href = `https://wa.me/6281291565358?text=Halo%20Rajib,%20saya%20mau%20pesan%20${barang}%20Albian%20Pool.`;
+        }
+    </script>
+</body>
+</html>
