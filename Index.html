@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ALBIAN POOL - Digital Construction</title>
+    <style>
+        :root { --biru: #0284c7; --dark: #0f172a; --emas: #fbbf24; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body, html { height: 100%; background: var(--dark); overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        /* Splash Screen */
+        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; transition: 0.8s ease-out; }
+        .logo-text { color: var(--emas); font-size: 28px; font-weight: 900; letter-spacing: 5px; text-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+        
+        /* Frame Content */
+        #app-content { width: 100%; height: calc(100% - 75px); border: none; transition: 0.3s; background: white; }
+        
+        /* Bottom Navigation */
+        .nav-bar { position: fixed; bottom: 0; left: 0; width: 100%; height: 75px; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px); display: flex; justify-content: space-around; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); z-index: 9999; }
+        .nav-item { color: #94a3b8; text-align: center; flex: 1; font-size: 11px; font-weight: 600; text-decoration: none; display: flex; flex-direction: column; gap: 5px; transition: 0.2s; }
+        .nav-item.active { color: var(--emas); transform: translateY(-3px); }
+        .nav-item i { font-size: 24px; font-style: normal; }
+    </style>
+</head>
+<body>
+    <div id="splash">
+        <div class="logo-text">ALBIAN</div>
+        <p style="color:white; font-size: 10px; margin-top: 15px; letter-spacing: 2px; opacity: 0.6;">RDS DIGITAL SOLUTION</p>
+    </div>
+
+    <iframe id="app-content" src="user.html"></iframe>
+
+    <nav class="nav-bar">
+        <a href="javascript:void(0)" class="nav-item active" onclick="loadPage('user.html', this)"><i>🏠</i><span>Home</span></a>
+        <a href="javascript:void(0)" class="nav-item" onclick="loadPage('blog.html', this)"><i>📰</i><span>Blog</span></a>
+        <a href="javascript:void(0)" class="nav-item" onclick="loadPage('monitoring-air.html', this)"><i>🧪</i><span>Lab</span></a>
+        <a href="javascript:void(0)" class="nav-item" onclick="loadPage('toko-obat.html', this)"><i>🛒</i><span>Shop</span></a>
+        <a href="javascript:void(0)" class="nav-item" onclick="loadPage('dashboard.html', this)"><i>⚙️</i><span>Admin</span></a>
+    </nav>
+
+    <script>
+        function loadPage(page, el) {
+            const frame = document.getElementById('app-content');
+            frame.style.opacity = '0';
+            setTimeout(() => { 
+                frame.src = page; 
+                frame.style.opacity = '1'; 
+            }, 200);
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            el.classList.add('active');
+            if (window.navigator.vibrate) window.navigator.vibrate(20);
+        }
+
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('splash').style.opacity = '0';
+                setTimeout(() => { document.getElementById('splash').style.display = 'none'; }, 800);
+            }, 1800);
+        };
+    </script>
+</body>
+</html>
