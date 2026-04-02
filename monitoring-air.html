@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: sans-serif; padding: 25px; background: #fff; color: #0f172a; text-align: center; }
+        .gauge-box { background: #f0f9ff; border: 2px solid #0284c7; border-radius: 30px; padding: 40px 20px; margin-top: 30px; }
+        .ph-value { font-size: 60px; font-weight: 900; color: #0284c7; margin: 10px 0; }
+        .status-ok { background: #22c55e; color: white; padding: 8px 20px; border-radius: 20px; display: inline-block; font-size: 12px; font-weight: bold; }
+        input[type="range"] { width: 100%; height: 15px; border-radius: 10px; background: #e2e8f0; outline: none; margin-top: 30px; accent-color: #0284c7; }
+    </style>
+</head>
+<body>
+    <h2>Digital Pool Lab</h2>
+    <p style="font-size: 13px; color: #64748b;">Cek kualitas air kolam real-time</p>
+    
+    <div class="gauge-box">
+        <div class="status-ok">AIR IDEAL</div>
+        <div id="display" class="ph-value">7.4</div>
+        <p style="font-weight: bold; color: #0284c7;">Kadar pH Air</p>
+    </div>
+
+    <input type="range" min="6" max="9" step="0.1" value="7.4" oninput="updateLab(this.value)">
+    <p style="font-size: 11px; margin-top: 20px; color: #94a3b8;">*Geser slider untuk simulasi data dari sensor Albian.</p>
+
+    <script>
+        function updateLab(val) {
+            document.getElementById('display').innerText = val;
+            const status = document.querySelector('.status-ok');
+            if(val >= 7.2 && val <= 7.6) {
+                status.innerText = "AIR IDEAL";
+                status.style.background = "#22c55e";
+            } else {
+                status.innerText = "PERLU OBAT";
+                status.style.background = "#ef4444";
+            }
+        }
+    </script>
+</body>
+</html>
